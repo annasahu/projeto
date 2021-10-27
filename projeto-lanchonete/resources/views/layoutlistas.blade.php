@@ -9,10 +9,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
+    
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -22,14 +19,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
-        
 	
-	<title>@yield('titulo')</title>
+	<title>@yield('titulopagina')</title>
 </head>
 
 <body>
-    @yield('conteudo')
+    <div class="main ">
+        <div class="table-container">
+            <h2 style="text-align: center">@yield('titulo')</h2>
+            <a href="/lanchonete/adicionarcliente" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+            @yield('mensagem')
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">@yield('campo1')</th>
+                        <th scope="col">@yield('campo2')</th>
+                        <th scope="col">@yield('campo3')</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @yield('loop')
+                </tbody>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
 
 </html>

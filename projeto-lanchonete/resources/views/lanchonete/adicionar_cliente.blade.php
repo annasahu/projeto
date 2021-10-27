@@ -22,7 +22,7 @@ Cadastrar cliente
         @csrf
         <div class="form-group">
             <label for="">Código</label>
-            <input type="number" class="form-control" name="id" id="id">
+            <input type="number" class="form-control" name="id" id="id"> 
         </div>
         <div class="form-group">
             <label for="">Nome</label>

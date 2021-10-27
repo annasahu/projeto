@@ -1,16 +1,32 @@
+@include('partials.modal_cliente')
+
 @extends('layout')
+
+
 
 @section('titulo')
 Tela Inicial
 @endsection
 
 @section('conteudo')
+
+
+@if (!empty($mensagem))
+<div class="alert alert-success">
+    {{ $mensagem }}
+</div>
+@endif
+
+
 <div class="container-fluid">
     <fieldset>
         <legend>Menu</legend>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Novo</a>
+                <img src="/images/logo.png">
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Novo</a>
             </li>
 
             <li class="nav-item">
@@ -23,7 +39,7 @@ Tela Inicial
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Clientes</a>
+                    <a class="dropdown-item" href="{{route('listar_clientes')}}">Clientes</a>
                     <a class="dropdown-item" href="#">Bebidas</a>
                     <a class="dropdown-item" href="#">Lanches</a>
                     <a class="dropdown-item" href="#">Adicionais</a>
@@ -60,11 +76,14 @@ Tela Inicial
                             <div class="col-11">
                                 <select class="form-control" id="exampleFormControlSelect1">
                                     <option selected></option>
-                                    <option>João Pedro</option>
-                                    <option>...</option>
+                                    @foreach ($clientes as $cliente)
+                                    <option>{{ $cliente->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#clienteModal">+</button>
+                            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#clienteModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
 
                         </div>
                     </form>
@@ -83,36 +102,12 @@ Tela Inicial
                                         <option>...</option>
                                     </select>
                                 </div>
-                                <div class="">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produtosModal">+</button>
-                                </div>
+                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                             </div>
                         </fieldset>
                         <div class="row">
-
-                            <fieldset class="col-6">
-                                <legend>Bebidas</legend>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="sim">
-                                    <label class="form-check-label" for="inlineRadio1">Sim</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="nao">
-                                    <label class="form-check-label" for="inlineRadio2">Não</label>
-                                </div>
-                            </fieldset>
-                            <fieldset class="col-6">
-                                <legend>Bebida Gelada?</legend>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="sim">
-                                    <label class="form-check-label" for="inlineRadio3">Sim</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio4" value="nao">
-                                    <label class="form-check-label" for="inlineRadio4">Não</label>
-                                </div>
-                            </fieldset>
-
                             <div class="col-6">
                                 <fieldset>
                                     <legend>Bebidas</legend>
@@ -153,9 +148,9 @@ Tela Inicial
                                         <option>...</option>
                                     </select>
                                 </div>
-                                <div class="">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produtosModal">+</button>
-                                </div>
+                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                             </div>
                         </fieldset>
                         <fieldset>
@@ -167,14 +162,21 @@ Tela Inicial
                         <fieldset>
                             <legend>Adicionais</legend>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="sim">
-                                <label class="form-check-label" for="inlineRadio5">Sim</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="sim">
+                                    <label class="form-check-label" for="inlineRadio5">Sim</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="nao">
+                                    <label class="form-check-label" for="inlineRadio6">Não</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="nao">
-                                <label class="form-check-label" for="inlineRadio6">Não</label>
-                            </div>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#produtosModal">+</button>
+
                         </fieldset>
                         <fieldset>
                             <legend>Adicionais</legend>
@@ -212,44 +214,7 @@ Tela Inicial
 
 <!--Modais-->
 <!--Modal Cadastro Cliente-->
-<div class="modal fade" id="clienteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-aria-hidden="true">
-<div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Cadastro de Cliente</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                    <label for="" class="col-form-label">Código:</label>
-                    <input type="number" class="form-control" name="">
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-form-label">Nome</label>
-                    <input type="text" class="form-control" name="">
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-form-label">Endereço:</label>
-                    <input type="text" class="form-control" name="">
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-form-label">Número:</label>
-                    <input type="text" class="form-control" name="">
-                </div>
 
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Enviar</button>
-        </div>
-    </div>
-</div>
-</div>
 
 
 
