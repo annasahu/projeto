@@ -81,7 +81,7 @@ Tela Inicial
                                     @endforeach
                                 </select>
                             </div>
-                            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#clienteModal">
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#clienteModal">
                                 <i class="fas fa-plus"></i>
                             </button>
 
@@ -102,7 +102,7 @@ Tela Inicial
                                         <option>...</option>
                                     </select>
                                 </div>
-                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -148,7 +148,7 @@ Tela Inicial
                                         <option>...</option>
                                     </select>
                                 </div>
-                                <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -171,7 +171,7 @@ Tela Inicial
                                     <label class="form-check-label" for="inlineRadio6">Não</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <button class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </div>

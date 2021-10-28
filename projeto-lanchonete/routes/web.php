@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/lanchonete', 'LanchoneteController@index')->name('index');
-Route::post('/lanchonete', 'LanchoneteController@storeClientModal');
+Route::post('/lanchonete', 'LanchoneteController@storeClienteModal');
 
 // referentes ao cliente
 Route::get('/lanchonete/adicionarcliente', 'LanchoneteController@adicionarCliente')->name('form_adicionar_cliente');

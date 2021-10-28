@@ -12,9 +12,9 @@ class LanchoneteController extends Controller
     {
         // ver como faz para adicionar todos os dados de BD na index
         $clientes = Cliente::query()
-            ->orderBy('id')
-            ->get();
-        $mensagem = $request->session()->get('mensagem');
+             ->orderBy('id')
+             ->get();
+         $mensagem = $request->session()->get('mensagem');
         $request->session()->remove('mensagem');
 
         return view('lanchonete.index',compact('clientes','mensagem'));
@@ -42,9 +42,9 @@ class LanchoneteController extends Controller
     }
 
     // modal de cliente (verificar se realmente precisa de um modal para cada banco)
-    public function storeClientModal(ClienteFormRequest $request)
+    public function storeClienteModal(ClienteFormRequest $request)
     {
-        $cliente = Cliente::create($request->all());
+        $cliente = Cliente::create($request->all()); 
         $request->session()
             ->flash(
                 'mensagem',

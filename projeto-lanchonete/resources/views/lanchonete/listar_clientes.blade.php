@@ -4,12 +4,19 @@
 Lista de Clientes
 @endsection
 
-
 @section('titulo', 'Clientes')
 
 @section('campo1', 'Nome')
 @section('campo2', 'Endereço')
 @section('campo3', 'Telefone')
+
+@section('mensagem')
+@if (!empty($mensagem))
+<div class="alert alert-success">
+    {{ $mensagem }}
+</div>
+@endif
+@endsection
 
 @section('loop')
 @foreach ($clientes as $cliente)
