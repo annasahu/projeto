@@ -1,22 +1,17 @@
 @include('partials.modal_cliente')
+@include('partials.modal_produto')
 
 @extends('layout')
 
-
-
-@section('titulo')
-Tela Inicial
-@endsection
+@section('titulo','Tela Inicial')
 
 @section('conteudo')
-
 
 @if (!empty($mensagem))
 <div class="alert alert-success">
     {{ $mensagem }}
 </div>
 @endif
-
 
 <div class="container-fluid">
     <fieldset>
@@ -55,8 +50,6 @@ Tela Inicial
         </ul>
     </fieldset>
 </div>
-
-
 
 <div class="container-fluid">
     <div class="row">
@@ -208,54 +201,4 @@ Tela Inicial
     </div>
 </div>
 
-
-
-
-
-<!--Modais-->
-<!--Modal Cadastro Cliente-->
-
-
-
-
-
-
-
-<!--Modal Casdastro Produtos-->
-
-
-<div class="modal fade" id="produtosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cadastro de Produtos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="" class="col-form-label">Código:</label>
-                        <input type="number" class="form-control" name="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-form-label">Descrição</label>
-                        <input type="text" class="form-control" name="">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="" class="col-form-label">Preço:</label>
-                        <input type="text" class="form-control" name="">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Enviar</button>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

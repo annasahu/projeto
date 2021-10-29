@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cliente;
+use App\Models\Cliente;
 use App\Http\Requests\ClienteFormRequest;
 
 class LanchoneteController extends Controller
@@ -78,4 +78,6 @@ class LanchoneteController extends Controller
 
             return redirect()->route('listar_clientes');
     }
+
+    //vou usar para criar a view com where: return view('greeting')->with('name', 'Victoria');
 }
