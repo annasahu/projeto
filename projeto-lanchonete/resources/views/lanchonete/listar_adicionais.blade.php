@@ -1,7 +1,7 @@
 @extends('layoutlistas')
 
 @section('titulopagina')
-Lista de Produtos
+Lista de Adicionais
 @endsection
 
 
@@ -15,16 +15,14 @@ Lista de Produtos
 </div>
 @endif
 
-@section('campo1', 'Tipo')
-@section('campo2', 'Descrição')
-@section('campo3', 'Preço')
+@section('campo1', 'Descrição')
+@section('campo2', 'Preço')
 
 
 @section('loop')
 @foreach ($produtos as $produto)
 <tr>
     <th scope="row">{{ $produto->id }}</th>
-    <td>{{ $produto->tipo }}</td>
     <td>{{ $produto->descricao }}</td>
     <td>{{ $produto->preco }}</td>
     <td class="btn-group" role="group">
