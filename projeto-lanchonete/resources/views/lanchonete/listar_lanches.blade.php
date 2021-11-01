@@ -20,6 +20,7 @@ Lista de Lanches
                     <th scope="col">ID</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +32,7 @@ Lista de Lanches
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
                         <!--adicionar página para edição-->
-                        <a href="{{route('form_adicionar_produto_lanche')}}" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
+                        <a href="{{route('form_adicionar_lanche')}}" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
                         <form method="post" action="/lanchonete/listarlanches/{{ $lanche->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($lanche->descricao) }}?')">
                             @csrf
                             @method('DELETE')

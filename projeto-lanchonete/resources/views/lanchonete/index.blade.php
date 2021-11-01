@@ -88,14 +88,13 @@
                             <div class="row">
                                 <div class="col-11">
                                     <select class="form-control" id="exampleFormControlSelect2">
-                                        <option selected>Cachorro Quente</option>
-                                        <option>X Salada</option>
-                                        <option>X Bacon</option>
-                                        <option>X Burguer</option>
-                                        <option>...</option>
+                                        <option selected></option>
+                                        @foreach ($lanches as $lanche)
+                                        <option>{{ $lanche->descricao }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
-                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#lanchesModal">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -134,11 +133,10 @@
                             <div class="row">
                                 <div class="col-11">
                                     <select class="form-control" id="exampleFormControlSelect3">
-                                        <option selected>Coca Cola</option>
-                                        <option>Guaraná</option>
-                                        <option>Fanta Laranja</option>
-                                        <option>Fanta Uva</option>
-                                        <option>...</option>
+                                        <option selected></option>
+                                        @foreach ($bebidas as $bebida)
+                                        <option>{{ $bebida->descricao }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
@@ -173,13 +171,9 @@
                         </fieldset>
                         <fieldset>
                             <legend>Adicionais</legend>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="pimenta" id="defaultCheck1">Pimenta</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="mostarda" id="defaultCheck2">Mostarda</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="ketchup" id="defaultCheck3">Ketchup</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="pure" id="defaultCheck4">Purê</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="maionese" id="defaultCheck5">Maionese</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="batata" id="defaultCheck6">Batata Palha</label>
-                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="barbecue" id="defaultCheck7">Barbecue</label>
+                            @foreach ($adicionais as $adicional)
+                            <label class="form-check" for="defaultCheck1"><input class="form-check-input" type="checkbox" value="{{ $adicional->descricao }}" id="defaultCheck">{{ $adicional->descricao }}</label>
+                            @endforeach
                         </fieldset>
                     </div>
                 </div>

@@ -15,10 +15,33 @@ class LanchoneteController extends Controller
         $clientes = Cliente::query()
             ->orderBy('id')
             ->get();
-        $mensagem = $request->session()->get('mensagem');
-        $request->session()->remove('mensagem');
 
-        return view('lanchonete.index', compact('clientes', 'mensagem'));
+        // seleciona apenas lanches
+        $lanches = Produto::query()
+            ->orderBy('descricao')
+            ->with('Categoria')
+            ->where('idCat', '3')
+            ->get();
+
+        // seleciona apenas bebidas
+        $bebidas = Produto::query()
+            ->orderBy('id')
+            ->with('Categoria')
+            ->where('idCat', '2')
+            ->get();
+
+        // seleciona apenas adicionais
+        $adicionais = Produto::query()
+            ->orderBy('id')
+            ->with('Categoria')
+            ->where('idCat', '1')
+            ->get();
+
+        // ARRUMAR MENSAGEM
+        //$mensagem = $request->session()->get('mensagem');
+        //$request->session()->remove('mensagem');
+
+    return view('lanchonete.index', compact('clientes', 'lanches', 'bebidas', 'adicionais', /*'mensagem'*/));
     }
 
     ################ referentes a clientes ####################
@@ -49,7 +72,7 @@ class LanchoneteController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente {$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
 
         //return view('lanchonete.index', compact('cliente', 'mensagem'));
@@ -86,34 +109,38 @@ class LanchoneteController extends Controller
     // mostra o formulário
     public function adicionarLanche(Request $request)
     {
-        return view('lanchonete.adicionar_lanche');
+        $categoria = Produto::query()
+            ->with('Categoria')->get();
+
+        return view('lanchonete.adicionar_lanche', compact('categoria'));
     }
 
     // salva os dados no BD - via form
     public function storeLanche(Request $request)
     {
         $lanche = Produto::create($request->all());
-        $request->session()
-            ->flash(
-                'mensagem',
-                "{$lanche->idCat->categoria} {$lanche->id} - {$lanche->nome} adicionado com sucesso" //???
-            );
+        // $request->session()
+        //     ->flash(
+        //         'mensagem',
+        //         "{$lanche->idCat->categoria} {$lanche->id} - {$lanche->nome} adicionado com sucesso" //???
+        //     );
 
         return redirect()->route('listar_lanches');
     }
 
-    // modal de cliente (verificar se realmente precisa de um modal para cada banco)
-    public function storeLancheModal(Request $request)
-    {
-        $lanche = Produto::create($request->all());
-        $request->session()
-            ->flash(
-                'mensagem',
-                "{$lanche->idCat->categoria} {$lanche->id} - {$lanche->nome} adicionado com sucesso" //???
-            );
+    // modal de cliente (verificar se realmente precisa de um modal para cada tabela)
+    // verificar pq a chamada está sobrescrevendo a outra
+    // public function storeLancheModal(Request $request)
+    // {
+    //     $lanche = Produto::create($request->all());
+    //     // $request->session()
+    //     //     ->flash(
+    //     //         'mensagem',
+    //     //         "{$lanche->idCat->categoria} {$lanche->id} - {$lanche->nome} adicionado com sucesso" //???
+    //     //     );
 
-        return redirect()->route('index');
-    }
+    //     return redirect()->route('index');
+    // }
 
     // página inicial de clientes
     public function listarLanches(Request $request)
@@ -127,7 +154,6 @@ class LanchoneteController extends Controller
 
         //return view('lanchonete.listar_lanches')->with('idCat->categoria','Lanche');
         return view('lanchonete.listar_lanches', compact('lanches', 'mensagem'));
-        
     }
 
     // deletar cliente
@@ -143,5 +169,4 @@ class LanchoneteController extends Controller
 
         return redirect()->route('listar_lanche');
     }
-
 }

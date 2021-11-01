@@ -27,11 +27,11 @@ Route::delete('/lanchonete/listarclientes/{id}', 'LanchoneteController@destroyCl
 // referentes a bebidas
 
 // referentes a lanches
-Route::get('/lanchonete/adicionarlanche', 'LanchoneteController@adicionarLanche')->name('form_adicionar_lanche');
-Route::get('/lanchonete/listarlanches', 'LanchoneteController@listarLanches')->name('listar_lanches');
-Route::post('/lanchonete/adicionarlanche', 'LanchoneteController@storeLanche');
-Route::post('/lanchonete', 'LanchoneteController@storeLancheModal'); //modal
-Route::delete('/lanchonete/listarlanches/{id}', 'LanchoneteController@destroyLanche');
+ Route::get('/lanchonete/adicionarlanche', 'LanchoneteController@adicionarLanche')->name('form_adicionar_lanche');
+ Route::get('/lanchonete/listarlanches', 'LanchoneteController@listarLanches')->name('listar_lanches');
+ Route::post('/lanchonete/adicionarlanche', 'LanchoneteController@storeLanche');
+//Route::post('/lanchonete', 'LanchoneteController@storeLancheModal'); //modal
+ Route::delete('/lanchonete/listarlanches/{id}', 'LanchoneteController@destroyLanche');
 
 
 
