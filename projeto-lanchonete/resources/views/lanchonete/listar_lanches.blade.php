@@ -28,7 +28,7 @@ Lista de Lanches
                 <tr>
                     <th scope="row">{{ $lanche->id }}</th>
                     <td>{{ $lanche->descricao }}</td>
-                    <td>{{ $lanche->preco }}</td>
+                    <td>R$ {{ $lanche->preco }}</td> 
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
                         <!--adicionar página para edição-->

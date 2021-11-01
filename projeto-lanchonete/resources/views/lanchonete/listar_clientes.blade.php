@@ -8,7 +8,7 @@ Lista de Clientes
 <div class="main ">
     <div class="table-container">
         <h2 style="text-align: center">Clientes</h2>
-        <a href="/lanchonete/adicionarcliente" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+        <a href="{{route('adicionar_cliente')}}" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
         @if (!empty($mensagem))
         <div class="alert alert-success">
             {{ $mensagem }}

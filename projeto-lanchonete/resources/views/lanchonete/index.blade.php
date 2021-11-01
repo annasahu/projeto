@@ -36,7 +36,7 @@
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('listar_clientes')}}">Clientes</a>
                     <a class="dropdown-item" href="#">Bebidas</a>
-                    <a class="dropdown-item" href="#">Lanches</a>
+                    <a class="dropdown-item" href="{{route('listar_lanches')}}">Lanches</a>
                     <a class="dropdown-item" href="#">Adicionais</a>
 
             </li>

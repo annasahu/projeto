@@ -15,6 +15,6 @@ class Categoria extends Model
 
     public function produto()
     {
-        return $this->hasOne(Produto::class);
+        return $this->hasOne(Produto::class,'idCat');
     }
 }

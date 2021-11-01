@@ -26,7 +26,7 @@ Cadastrar Lanche
             </div>
         <div class="form-group">
             <label for="">Categoria</label>
-            <input type="number" class="form-control" name="idCat" id="idCat" value="Lanche"> 
+            <input readonly="readonly" type="number" class="form-control" name="idCat" id="idCat" value="{{$categoria}}"> 
         </div>
         <div class="form-group">
             <label for="">Descrição</label>

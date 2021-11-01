@@ -8,32 +8,34 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post">
+                    @csrf
                     <div class="form-group">
                         <label for="" class="col-form-label">Código:</label>
-                        <input type="number" class="form-control" name="">
+                        <input type="number" class="form-control" name="id" id="id" disabled value="">
                     </div>
 
                     <div class="form-group">
                         <label for="" class="col-form-label">Tipo:</label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" name="idCat" id="idCat">
                     </div>
 
                     <div class="form-group">
                         <label for="" class="col-form-label">Descrição</label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" name="descricao" id="descricao">
                     </div>
 
                     <div class="form-group">
                         <label for="" class="col-form-label">Preço:</label>
-                        <input type="text" class="form-control" name="">
+                        <input type="text" class="form-control" name="preco" id="preco">
                     </div>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Enviar</button>
             </div>
+        </form>
         </div>
     </div>
 </div>
