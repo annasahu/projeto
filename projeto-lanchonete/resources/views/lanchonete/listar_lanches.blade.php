@@ -8,7 +8,7 @@ Lista de Lanches
 <div class="main ">
     <div class="table-container">
         <h2 style="text-align: center">Lanches</h2>
-        <a href="/lanchonete/adicionarlanche" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+        <a href="{{route('form_adicionar_lanche')}}" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
         @if (!empty($mensagem))
         <div class="alert alert-success">
             {{ $mensagem }}
@@ -28,7 +28,7 @@ Lista de Lanches
                 <tr>
                     <th scope="row">{{ $lanche->id }}</th>
                     <td>{{ $lanche->descricao }}</td>
-                    <td>R$ {{ $lanche->preco }}</td> 
+                    <td>R$ {{ $lanche->preco }}</td>
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
                         <!--adicionar página para edição-->

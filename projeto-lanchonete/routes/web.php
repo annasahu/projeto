@@ -24,8 +24,20 @@ Route::delete('/lanchonete/listarclientes/{id}', 'ClientesController@destroyClie
 //Route::edit()->name('editar_cliente');
 
 // referentes a adicionais
+Route::get('/lanchonete/listaradicionais', 'AdicionaisController@listarAdicionais')->name('listar_adicionais');
+Route::get('/lanchonete/listaradicionais/adicionaradicionais', 'AdicionaisController@adicionarAdicional')->name('form_adicionar_adicional');
+Route::post('/lanchonete/listaradicionais/adicionaradicionais', 'AdicionaisController@storeAdicional')->name('adicionar_adicionais');
+Route::post('/lanchonete', 'AdicionaisController@storeAdicionalModal'); //modal
+Route::delete('/lanchonete/listaradicionais/{id}', 'AdicionaisController@destroyAdicional');
+//Route::edit()->name('editar_adicional');
 
 // referentes a bebidas
+Route::get('/lanchonete/listarbebidas', 'BebidasController@listarBebidas')->name('listar_bebidas');
+Route::get('/lanchonete/listarbebidas/adicionarbebidas', 'BebidasController@adicionarBebida')->name('form_adicionar_bebida');
+Route::post('/lanchonete/listarbebidas/adicionarbebidas', 'BebidasController@storeBebida')->name('adicionar_bebidas');
+Route::post('/lanchonete', 'BebidasController@storeBebidaModal'); //modal
+Route::delete('/lanchonete/listarbebidas/{id}', 'bebidasController@destroyBebida');
+//Route::edit()->name('editar_bebidas');
 
 // referentes a lanches
 Route::get('/lanchonete/listarlanches', 'LanchesController@listarLanches')->name('listar_lanches');

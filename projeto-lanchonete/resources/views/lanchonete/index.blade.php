@@ -1,5 +1,7 @@
 @include('partials.modal_cliente')
-@include('partials.modal_produto')
+@include('partials.modal_lanche')
+@include('partials.modal_bebida')
+@include('partials.modal_adicional')
 
 @extends('layout')
 
@@ -35,9 +37,9 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{route('listar_clientes')}}">Clientes</a>
-                    <a class="dropdown-item" href="#">Bebidas</a>
+                    <a class="dropdown-item" href="{{route('listar_bebidas')}}">Bebidas</a>
                     <a class="dropdown-item" href="{{route('listar_lanches')}}">Lanches</a>
-                    <a class="dropdown-item" href="#">Adicionais</a>
+                    <a class="dropdown-item" href="{{route('listar_adicionais')}}">Adicionais</a>
 
             </li>
 
@@ -139,7 +141,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#bebidasModal">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -162,7 +164,7 @@
                                     <label class="form-check-label" for="inlineRadio6">Não</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#produtosModal">
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#adicionaisModal">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </div>

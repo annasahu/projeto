@@ -25,11 +25,11 @@ class LanchesController extends Controller
     public function storeLanche(LancheFormRequest $request)
     {
         $lanche = Produto::create($request->all());
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "{$lanche->idCat->categoria} {$lanche->id} - {$lanche->nome} adicionado com sucesso" //???
-        //     );
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$lanche->id} - {$lanche->categoria} adicionado com sucesso"
+            );
 
         $categorias = Categoria::query()
             ->where('categoria', 'Lanche')

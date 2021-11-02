@@ -26,11 +26,11 @@ class AdicionaisController extends Controller
     public function storeAdicional(AdicionalFormRequest $request)
     {
         $adicional = Produto::create($request->all());
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "{$adicional->idCat->categoria} {$adicional->id} - {$adicional->nome} adicionado com sucesso" //???
-        //     );
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" //???
+            );
 
         $categorias = Categoria::query()
             ->where('categoria', 'adicional')
@@ -44,17 +44,17 @@ class AdicionaisController extends Controller
     public function storeAdicionalModal(AdicionalFormRequest $request)
     {
         $adicional = Produto::create($request->all());
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "{$adicional->idCat->categoria} {$adicional->id} - {$adicional->nome} adicionado com sucesso" //???
-        //     );
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" //???
+            );
 
         return redirect()->route('index');
     }
 
     // página inicial de clientes
-    public function listaradicionals(Request $request)
+    public function listarAdicionais(Request $request)
     {
         $adicionais = Produto::query()
             ->with('Categoria')

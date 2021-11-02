@@ -16,7 +16,7 @@ class BebidasController extends Controller
     {
         $categoria = Produto::query()
             ->with('Categoria')
-            ->where('idCat', '3')
+            ->where('idCat', '2')
             ->get();
 
         return view('lanchonete.adicionar_bebida', compact('categoria'));
@@ -26,48 +26,49 @@ class BebidasController extends Controller
     public function storeBebida(BebidaFormRequest $request)
     {
         $bebida = Produto::create($request->all());
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "{$bebida->idCat->categoria} {$bebida->id} - {$bebida->nome} adicionado com sucesso" //???
-        //     );
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$bebida->id} - {$bebida->categoria}  adicionado com sucesso" 
+            );
 
         $categorias = Categoria::query()
             ->where('categoria', 'Bebida')
             ->get();
 
-        return redirect()->route('listar_bebida');
+        return redirect()->route('listar_bebidas');
     }
 
     
     public function storeBebidaModal(BebidaFormRequest $request)
     {
         $bebida = Produto::create($request->all());
-        // $request->session()
-        //     ->flash(
-        //         'mensagem',
-        //         "{$bebida->idCat->categoria} {$bebida->id} - {$bebida->nome} adicionado com sucesso" //???
-        //     );
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$bebida->id} - {$bebida->descricao} -  adicionado com sucesso"
+                //{$bebida->categoria->categoria}: lista o idCat e categoria da tabela Categoria
+            );
 
         return redirect()->route('index');
     }
 
     // página inicial de clientes
-    public function listarbebidas(Request $request)
+    public function listarBebidas(Request $request)
     {
         $bebidas = Produto::query()
             ->with('Categoria')
-            ->where('idCat', '3')
+            ->where('idCat', '2')
             ->get();
 
         $mensagem = $request->session()->get('mensagem');
         $request->session()->remove('mensagem');
 
-        return view('lanchonete.listar_bebida', compact('bebidas', 'mensagem'));
+        return view('lanchonete.listar_bebidas', compact('bebidas', 'mensagem'));
     }
 
     // deletar cliente
-    public function destroybebida(Request $request)
+    public function destroyBebida(Request $request)
     {
         Produto::destroy($request->id);
 
@@ -77,6 +78,6 @@ class BebidasController extends Controller
                 "Produto removido com sucesso"
             );
 
-        return redirect()->route('listar_bebida');
+        return redirect()->route('listar_bebidas');
     }
 }

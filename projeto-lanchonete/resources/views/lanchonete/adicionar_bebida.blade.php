@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('titulo')
-Cadastrar Lanche
+Cadastrar Bebida
 @endsection
 
 @section('conteudo')
@@ -18,7 +18,7 @@ Cadastrar Lanche
 
 <div class="main">
     <form class="form-container" method="post">
-        <h2 style="text-align: center">Novo Lanche</h2>
+        <h2 style="text-align: center">Nova Bebida</h2>
         @csrf
         <div class="form-group">
             <label for="">Código</label>
