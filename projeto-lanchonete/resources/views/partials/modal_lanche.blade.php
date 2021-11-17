@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="" class="col-form-label">Tipo:</label>
+                        <label for="" class="col-form-label">Categoria:</label>
                         <input type="text" class="form-control" name="idCat" id="idCat">
                     </div>
 
@@ -30,10 +30,10 @@
                         <input type="text" class="form-control" name="preco" id="preco">
                     </div>
                 
-            </div>
+            </div> 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Enviar</button>
+                <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Cadastrar</button>
             </div>
         </form>
         </div>

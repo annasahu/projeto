@@ -23,7 +23,7 @@ class ClientesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente: {$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
 
         return redirect()->route('listar_clientes');
@@ -31,12 +31,12 @@ class ClientesController extends Controller
 
     // modal
     public function storeClienteModal(ClienteFormRequest $request)
-    {
-        $cliente = Cliente::create($request->all());
+    { 
+        $cliente = Cliente::create($request->all()); 
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente: {$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
 
         return redirect()->route('index');
@@ -72,7 +72,7 @@ class ClientesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente: {$id} - {$request->nome} editado com sucesso"
+                "{$id} - {$request->nome} editado com sucesso"
             );
 
         return redirect()->route('listar_clientes');
@@ -86,7 +86,7 @@ class ClientesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente: {$request->nome} removido com sucesso"
+                "{$request->nome} removido com sucesso"
             );
 
         return redirect()->route('listar_clientes');

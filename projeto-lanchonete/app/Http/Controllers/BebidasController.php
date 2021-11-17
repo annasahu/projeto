@@ -33,7 +33,7 @@ class BebidasController extends Controller
             );
 
         $categorias = Categoria::query()
-            ->where('categoria', 'Bebida')
+            ->where('categoria', 'Bebida') 
             ->get();
 
         return redirect()->route('listar_bebidas');

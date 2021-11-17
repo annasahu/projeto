@@ -29,7 +29,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Enviar</button>
+                <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Cadastrar</button>
             </div>
             </form>
         </div>
