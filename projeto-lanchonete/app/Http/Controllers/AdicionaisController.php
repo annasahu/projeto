@@ -39,21 +39,20 @@ class AdicionaisController extends Controller
         return redirect()->route('listar_adicionais');
     }
 
-    // modal de cliente (verificar se realmente precisa de um modal para cada tabela)
-    // verificar pq a chamada está sobrescrevendo a outra
+    // modal
     public function storeAdicionalModal(AdicionalFormRequest $request)
     {
         $adicional = Produto::create($request->all());
         $request->session()
             ->flash(
                 'mensagem',
-                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" //???
+                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" 
             );
 
         return redirect()->route('index');
     }
 
-    // página inicial de clientes
+    // página inicial
     public function listarAdicionais(Request $request)
     {
         $adicionais = Produto::query()
@@ -67,8 +66,31 @@ class AdicionaisController extends Controller
         return view('lanchonete.listar_adicionais', compact('adicionais', 'mensagem'));
     }
 
-    // deletar cliente
-    public function destroyadicional(Request $request)
+    // editar
+    public function editarAdicional(Request $request)
+    {
+        $adicional = Produto::find($request->id);
+
+        return view('lanchonete.adicionar_adicional',compact('adicional'));
+    }
+
+    public function updateAdicional(AdicionalFormRequest $request, $id)
+    {
+        $adicional = Produto::where(['id'=>$id])->update([
+            'descricao'=>$request->descricao,
+            'preco'=>$request->preco
+        ]);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$id} - {$request->descricao} editado com sucesso" 
+            );
+
+        return redirect()->route('listar_adicionais');
+    }
+
+    // deletar
+    public function destroyAdicional(Request $request)
     {
         Produto::destroy($request->id);
 
