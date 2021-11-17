@@ -7,7 +7,7 @@ use App\Models\Produto;
 use App\Models\Categoria;
 use App\Http\Requests\LancheFormRequest;
 
-class LanchesController extends Controller
+class LanchesController extends Controller 
 {
     ################ referentes a lanches ####################
     // mostra o formulário
@@ -28,7 +28,7 @@ class LanchesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "{$lanche->id} - {$lanche->categoria} adicionado com sucesso"
+                "{$lanche->id} - {$lanche->descricao} adicionado com sucesso"
             );
 
         $categorias = Categoria::query()
@@ -38,8 +38,7 @@ class LanchesController extends Controller
         return redirect()->route('listar_lanches');
     }
 
-    // modal de cliente (verificar se realmente precisa de um modal para cada tabela)
-    // verificar pq a chamada está sobrescrevendo a outra
+    // modal 
     public function storeLancheModal(lancheFormRequest $request)
     {
         $lanche = Produto::create($request->all());
@@ -49,11 +48,10 @@ class LanchesController extends Controller
                 "{$lanche->id} - {$lanche->descricao} adicionado com sucesso"
             );
 
-        //return view('lanchonete.index', compact('cliente', 'mensagem'));
         return redirect()->route('index');
     }
 
-    // página inicial de clientes
+    // página inicial
     public function listarLanches(Request $request)
     {
         $lanches = Produto::query()
@@ -67,7 +65,30 @@ class LanchesController extends Controller
         return view('lanchonete.listar_lanches', compact('lanches', 'mensagem'));
     }
 
-    // deletar cliente
+    // editar 
+    public function editarLanche(Request $request)
+    {
+        $lanche = Produto::find($request->id);
+
+        return view('lanchonete.adicionar_lanche', compact('lanche'));
+    }
+
+    public function updateLanche(LancheFormRequest $request, $id)
+    {
+        $lanche = Produto::where(['id' => $id])->update([
+            'descricao' => $request->descricao,
+            'preco' => $request->preco
+        ]);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$id} - {$request->descricao} editado com sucesso"
+            );
+
+        return redirect()->route('listar_lanches');
+    }
+
+    // deletar
     public function destroyLanche(Request $request)
     {
         Produto::destroy($request->id);
@@ -75,7 +96,7 @@ class LanchesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Lanche removido com sucesso"
+                "{$request->id} - {$request->descricao} removido com sucesso"
             );
 
         return redirect()->route('listar_lanches');

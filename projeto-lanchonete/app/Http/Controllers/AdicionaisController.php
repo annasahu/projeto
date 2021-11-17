@@ -97,7 +97,7 @@ class AdicionaisController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "adicional removido com sucesso"
+                "{$request->id} - {$request->descricao}  removido com sucesso"
             );
 
         return redirect()->route('listar_adicionais');

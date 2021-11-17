@@ -1,15 +1,14 @@
 @extends('layout')
 
 @section('titulo')
-@if(isset($adicional)) Editar Adicional
+@if(isset($adicional))
+Editar Adicional
 @else
 Cadastrar Adicional
 @endif
 @endsection
 
 @section('conteudo')
-
-
 
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -48,7 +47,8 @@ Cadastrar Adicional
             <input type="double" class="form-control" name="preco" id="preco" value="{{$adicional->preco ?? ''}}">
         </div>
         <button type="submit" class="btn btn-primary">
-            @if(isset($adicional)) Editar
+            @if(isset($adicional))
+            Editar
             @else
             Cadastrar
             @endif

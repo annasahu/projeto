@@ -31,8 +31,7 @@ Lista de Bebidas
                     <td>R$ {{ $bebida->preco }}</td>
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
-                        <!--adicionar página para edição-->
-                        <a href="{{route('form_adicionar_bebida')}}" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
+                        <a href="/lanchonete/listarbebidas/{{ $bebida->id }}/edit" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
                         <form method="post" action="/lanchonete/listarbebidas/{{ $bebida->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($bebida->descricao) }}?')">
                             @csrf
                             @method('DELETE')

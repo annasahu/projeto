@@ -23,27 +23,26 @@ class ClientesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente {$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "Cliente: {$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
 
         return redirect()->route('listar_clientes');
     }
 
-    // modal de cliente (verificar se realmente precisa de um modal para cada banco)
+    // modal
     public function storeClienteModal(ClienteFormRequest $request)
     {
         $cliente = Cliente::create($request->all());
         $request->session()
             ->flash(
                 'mensagem',
-                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "Cliente: {$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
 
-        //return view('lanchonete.index', compact('cliente', 'mensagem'));
         return redirect()->route('index');
     }
 
-    // página inicial de clientes
+    // página inicial
     public function listarClientes(Request $request)
     {
         $clientes = Cliente::query()
@@ -55,7 +54,31 @@ class ClientesController extends Controller
         return view('lanchonete.listar_clientes', compact('clientes', 'mensagem'));
     }
 
-    // deletar cliente
+    // editar 
+    public function editarCliente(Request $request)
+    {
+        $cliente = Cliente::find($request->id);
+
+        return view('lanchonete.adicionar_cliente', compact('cliente'));
+    }
+
+    public function updateCliente(ClienteFormRequest $request, $id)
+    {
+        $cliente = Cliente::where(['id' => $id])->update([
+            'nome' => $request->nome,
+            'endereco' => $request->endereco,
+            'telefone' => $request->telefone
+        ]);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Cliente: {$id} - {$request->nome} editado com sucesso"
+            );
+
+        return redirect()->route('listar_clientes');
+    }
+
+    // deletar 
     public function destroyCliente(Request $request)
     {
         Cliente::destroy($request->id);
@@ -63,7 +86,7 @@ class ClientesController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Cliente removido com sucesso"
+                "Cliente: {$request->nome} removido com sucesso"
             );
 
         return redirect()->route('listar_clientes');

@@ -31,7 +31,6 @@ Lista de Adicionais
                     <td>R$ {{ $adicional->preco }}</td>
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
-                        <!--adicionar página para edição-->
                         <a href="/lanchonete/listaradicionais/{{ $adicional->id }}/edit" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
                         <form method="post" action="/lanchonete/listaradicionais/{{ $adicional->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($adicional->descricao) }}?')">
                             @csrf

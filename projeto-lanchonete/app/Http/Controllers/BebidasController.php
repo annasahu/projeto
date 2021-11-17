@@ -29,7 +29,7 @@ class BebidasController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "{$bebida->id} - {$bebida->categoria}  adicionado com sucesso" 
+                "{$bebida->id} - {$bebida->descricao} adicionado com sucesso"
             );
 
         $categorias = Categoria::query()
@@ -39,21 +39,20 @@ class BebidasController extends Controller
         return redirect()->route('listar_bebidas');
     }
 
-    
+    // modal
     public function storeBebidaModal(BebidaFormRequest $request)
     {
         $bebida = Produto::create($request->all());
         $request->session()
             ->flash(
                 'mensagem',
-                "{$bebida->id} - {$bebida->descricao} -  adicionado com sucesso"
-                //{$bebida->categoria->categoria}: lista o idCat e categoria da tabela Categoria
+                "{$bebida->id} - {$bebida->descricao} - adicionado com sucesso"
             );
 
         return redirect()->route('index');
     }
 
-    // página inicial de clientes
+    // página inicial
     public function listarBebidas(Request $request)
     {
         $bebidas = Produto::query()
@@ -67,7 +66,30 @@ class BebidasController extends Controller
         return view('lanchonete.listar_bebidas', compact('bebidas', 'mensagem'));
     }
 
-    // deletar cliente
+    // editar 
+    public function editarBebida(Request $request) 
+    {
+        $bebida = Produto::find($request->id);
+
+        return view('lanchonete.adicionar_bebida', compact('bebida'));
+    }
+
+    public function updateBebida(BebidaFormRequest $request, $id)
+    {
+        $bebida = Produto::where(['id' => $id])->update([
+            'descricao' => $request->descricao,
+            'preco' => $request->preco
+        ]);
+        $request->session()
+            ->flash(
+                'mensagem',
+                "{$id} - {$request->descricao} editado com sucesso"
+            );
+
+        return redirect()->route('listar_bebidas');
+    }
+
+    // deletar
     public function destroyBebida(Request $request)
     {
         Produto::destroy($request->id);
@@ -75,7 +97,7 @@ class BebidasController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "Produto removido com sucesso"
+                "{$request->id} - {$request->descricao} removido com sucesso"
             );
 
         return redirect()->route('listar_bebidas');

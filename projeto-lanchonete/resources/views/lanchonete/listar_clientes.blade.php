@@ -33,8 +33,7 @@ Lista de Clientes
                     <td>{{ $cliente->telefone }}</td>
                     <td class="btn-group" role="group">
                         <!-- arrumar o alinhamento dos botões-->
-                        <!--adicionar página para edição-->
-                        <a href="{{route('form_adicionar_cliente')}}" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
+                        <a href="/lanchonete/listarclientes/{{ $cliente->id }}/edit" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
                         <form method="post" action="/lanchonete/listarclientes/{{ $cliente->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($cliente->nome) }}?')">
                             @csrf
                             @method('DELETE')
