@@ -9,6 +9,8 @@ Lista de Lanches
     <div class="table-container">
         <h2 style="text-align: center">Lanches</h2>
         <a href="{{route('form_adicionar_lanche')}}" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+        <a href="{{route('index')}}" class="btn btn-secondary " role="button" aria-pressed="true">Voltar</a>
+
         @if (!empty($mensagem))
         <div class="alert alert-success">
             {{ $mensagem }}
@@ -35,7 +37,7 @@ Lista de Lanches
                         <form method="post" action="/lanchonete/listarlanches/{{ $lanche->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($lanche->descricao) }}?')">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" role="button" aria-pressed="true">Excluir</a>
+                            <button class="btn btn-danger btn-space" role="button" aria-pressed="true">Excluir</a>
                         </form>
                     </td>
                 </tr>

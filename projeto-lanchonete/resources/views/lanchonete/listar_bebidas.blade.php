@@ -9,6 +9,8 @@ Lista de Bebidas
     <div class="table-container">
         <h2 style="text-align: center">Bebidas</h2>
         <a href="{{route('form_adicionar_bebida')}}" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+        <a href="{{route('index')}}" class="btn btn-secondary " role="button" aria-pressed="true">Voltar</a>
+
         @if (!empty($mensagem))
         <div class="alert alert-success">
             {{ $mensagem }}
@@ -30,12 +32,11 @@ Lista de Bebidas
                     <td>{{ $bebida->descricao }}</td>
                     <td>R$ {{ $bebida->preco }}</td>
                     <td class="btn-group" role="group">
-                        <!-- arrumar o alinhamento dos botões-->
                         <a href="/lanchonete/listarbebidas/{{ $bebida->id }}/edit" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
                         <form method="post" action="/lanchonete/listarbebidas/{{ $bebida->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($bebida->descricao) }}?')">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" role="button" aria-pressed="true">Excluir</a>
+                            <button class="btn btn-danger btn-space" role="button" aria-pressed="true">Excluir</a>
                         </form>
                     </td>
                 </tr>

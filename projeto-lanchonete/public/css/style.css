@@ -28,8 +28,13 @@ body, html {
 .form-container {
     width: 50%;
 }
-fieldset{
+
+fieldset {
     border: 1px solid lightgray;
     padding: 9px;
     margin: 9px 3px;
+}
+
+.btn-space {
+    margin-left: 8px;
 }

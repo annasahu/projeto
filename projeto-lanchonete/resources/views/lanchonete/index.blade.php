@@ -20,7 +20,9 @@
         <legend>Menu</legend>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <img src="/images/logo.png">
+                <img src="https://img.icons8.com/emoji/48/000000/hamburger-emoji.png" />
+                <!-- <i class="fas fa-hamburger"></i> -->
+
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Novo</a>

@@ -9,6 +9,8 @@ Lista de Clientes
     <div class="table-container">
         <h2 style="text-align: center">Clientes</h2>
         <a href="{{route('adicionar_cliente')}}" class="btn btn-primary " role="button" aria-pressed="true">Adicionar</a>
+        <a href="{{route('index')}}" class="btn btn-secondary " role="button" aria-pressed="true">Voltar</a>
+
         @if (!empty($mensagem))
         <div class="alert alert-success">
             {{ $mensagem }}
@@ -32,12 +34,15 @@ Lista de Clientes
                     <td>{{ $cliente->endereco }}</td>
                     <td>{{ $cliente->telefone }}</td>
                     <td class="btn-group" role="group">
-                        <!-- arrumar o alinhamento dos botões-->
                         <a href="/lanchonete/listarclientes/{{ $cliente->id }}/edit" class="btn btn-primary " role="button" aria-pressed="true">Editar</a>
+
                         <form method="post" action="/lanchonete/listarclientes/{{ $cliente->id }}" onsubmit="return confirm('Tem certeza que deseja remover {{ addslashes($cliente->nome) }}?')">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger" role="button" aria-pressed="true">Excluir</a>
+                            <button class="btn btn-danger btn-space" role="button" aria-pressed="true">Excluir</a>
+
+
+
                         </form>
                     </td>
                 </tr>
@@ -47,5 +52,7 @@ Lista de Clientes
             </tbody>
         </table>
     </div>
+
+
 </div>
 @endsection
