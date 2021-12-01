@@ -29,7 +29,7 @@ class AdicionaisController extends Controller
         $request->session()
             ->flash(
                 'mensagem',
-                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" //???
+                "{$adicional->id} - {$adicional->descricao} adicionado com sucesso" 
             );
 
         $categorias = Categoria::query()

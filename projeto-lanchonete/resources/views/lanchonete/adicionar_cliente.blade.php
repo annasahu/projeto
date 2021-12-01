@@ -44,7 +44,7 @@ Cadastrar Cliente
         </div>
         <div class="form-group">
             <label for="">Telefone</label>
-            <input type="text" class="form-control" name="telefone" id="telefone" value="{{$cliente->telefone ?? ''}}">
+            <input type="text" onkeypress="$(this).mask('(00)0.0000-0000')" class="form-control" name="telefone" id="telefone" value="{{$cliente->telefone ?? ""}}">
         </div>
         <button type="submit" class="btn btn-primary">
             @if(isset($cliente))

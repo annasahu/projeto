@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// referentes a pedidos
 Route::get('/lanchonete', 'LanchoneteController@index')->name('index');
+Route::post('/lanchonete', 'LanchoneteController@storePedido')->name('adicionar_pedido');
 
 // referentes ao cliente
 Route::get('/lanchonete/listarclientes', 'ClientesController@listarClientes')->name('listar_clientes');
@@ -50,3 +52,4 @@ Route::post('/lanchonete', 'LanchesController@storeLancheModal'); //modal
 Route::delete('/lanchonete/listarlanches/{id}', 'LanchesController@destroyLanche');
 Route::get('/lanchonete/listarlanches/{id}/edit', 'LanchesController@editarLanche')->name('form_editar_lanche');
 Route::put('/lanchonete/listarlanches/{id}/edit', 'LanchesController@updateLanche')->name('editar_lanche');
+

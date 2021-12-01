@@ -36,7 +36,7 @@ Cadastrar Bebida
             </div>
         <div class="form-group">
             <label for="">Categoria</label>
-            <input type="number" class="form-control" name="idCat" id="idCat" value="{{$bebida->idCat ?? ''}}"> 
+            <input type="number" class="form-control" name="idCat" id="idCat" value="{{$bebida->idCat ?? '2'}}"> 
         </div>
         <div class="form-group">
             <label for="">Descrição</label>
@@ -44,7 +44,7 @@ Cadastrar Bebida
         </div>
         <div class="form-group">
             <label for="">Preço</label>
-            <input type="double" class="form-control" name="preco" id="preco" value="{{$bebida->preco ?? ''}}">
+            <input type="text" onkeypress="$(this).mask('#,##0.00', {reverse: true});" class="form-control" name="preco" id="preco" value="{{$bebida->preco ?? ''}}">
         </div>
         <button type="submit" class="btn btn-primary">
             @if(isset($bebida))

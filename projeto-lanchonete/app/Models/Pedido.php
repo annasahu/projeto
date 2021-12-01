@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produto extends Model
+class Pedido extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
+    
+    protected $fillable = ['idCliente', 'data', 'valorTotal', 'observacoes'];
 
-    protected $fillable = ['descricao', 'preco', 'idCat'];
-
-    public function categoria()
+    public function cliente()
     {
-        return $this->belongsTo(Categoria::class,'idCat');
+        return $this->belongsTo(Cliente::class,'idCliente');
     }
 
     public function item()

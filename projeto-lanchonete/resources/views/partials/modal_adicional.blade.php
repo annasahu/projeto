@@ -17,7 +17,7 @@
 
                     <div class="form-group">
                         <label for="" class="col-form-label">Categoria:</label>
-                        <input type="text" class="form-control" name="idCat" id="idCat">
+                        <input type="text" class="form-control" name="idCat" id="idCat" value="1">
                     </div>
 
                     <div class="form-group">
@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="" class="col-form-label">Preço:</label>
-                        <input type="text" class="form-control" name="preco" id="preco">
+                        <input type="text" onkeypress="$(this).mask('#,##0.00', {reverse: true});" class="form-control" name="preco" id="preco">
                     </div>
                 
             </div>

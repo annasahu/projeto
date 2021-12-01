@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdicionalFormRequest extends FormRequest
+class PedidoFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class AdicionalFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => 'required|min:2',
-            'preco' => 'required|min:1',
+            'idCliente' => 'required',
+            'data' => 'required',
+            'lanche' => 'required',
+            'bebida' => 'required',
+            'adicional' => 'required',
         ];
     }
 
@@ -33,7 +36,6 @@ class AdicionalFormRequest extends FormRequest
     {
         return [
             'required' => 'O campo :attribute é obrigatório',
-            'min' => 'O campo :attribute precisa ter pelo menos 2 caracteres'
         ];
     }
 }

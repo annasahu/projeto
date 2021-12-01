@@ -29,16 +29,15 @@ class ClientesController extends Controller
         return redirect()->route('listar_clientes');
     }
 
-    // modal
+    // salva os dados no BD - via modal
     public function storeClienteModal(ClienteFormRequest $request)
-    { 
-        $cliente = Cliente::create($request->all()); 
+    {
+        $cliente = Cliente::create($request->all());
         $request->session()
             ->flash(
                 'mensagem',
-                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
+                "{$cliente->id} - {$cliente->nome} - adicionado com sucesso"
             );
-
         return redirect()->route('index');
     }
 

@@ -9,7 +9,6 @@ Cadastrar Adicional
 @endsection
 
 @section('conteudo')
-
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -36,7 +35,7 @@ Cadastrar Adicional
             </div>
         <div class="form-group">
             <label for="">Categoria</label>
-            <input type="number" class="form-control" name="idCat" id="idCat" value="{{$adicional->idCat ?? ''}}"> 
+            <input type="number" class="form-control" name="idCat" id="idCat" value="{{$adicional->idCat ?? '1'}}"> 
         </div>
         <div class="form-group">
             <label for="">Descrição</label>
@@ -44,7 +43,7 @@ Cadastrar Adicional
         </div>
         <div class="form-group">
             <label for="">Preço</label>
-            <input type="double" class="form-control" name="preco" id="preco" value="{{$adicional->preco ?? ''}}">
+            <input type="text" onkeypress="$(this).mask('#,##0.00', {reverse: true});" class="form-control" name="preco" id="preco" value="{{$adicional->preco ?? ''}}">
         </div>
         <button type="submit" class="btn btn-primary">
             @if(isset($adicional))

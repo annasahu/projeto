@@ -25,7 +25,7 @@ class LancheFormRequest extends FormRequest
     {
         return [
             'descricao' => 'required|min:2',
-            'preco' => 'required|min:2',
+            'preco' => 'required|min:1',
         ];
     }
 

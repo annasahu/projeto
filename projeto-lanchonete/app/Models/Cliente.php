@@ -12,4 +12,9 @@ class Cliente extends Model
     public $timestamps = false;
     protected $fillable = ['id','nome','endereco','telefone'];
     
+    
+    public function pedido()
+    {
+        return $this->hasOne(Pedido::class,'id');
+    }
 }

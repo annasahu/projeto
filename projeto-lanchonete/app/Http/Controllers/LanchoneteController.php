@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Models\Pedido;
+use App\Http\Requests\PedidoFormRequest;
 
 class LanchoneteController extends Controller
 {
+    // formulário para adicionar pedido
     public function index(Request $request)
     {
-        // ver como faz para adicionar todos os dados de BD na index
         $clientes = Cliente::query()
             ->orderBy('id')
             ->get();
@@ -36,13 +38,30 @@ class LanchoneteController extends Controller
             ->with('Categoria')
             ->where('idCat', '1')
             ->get();
+        
+        $pedidos = Pedido::query()
+            ->orderBy('id')
+            ->get();
 
-        // ARRUMAR MENSAGEM
         $mensagem = $request->session()->get('mensagem');
         $request->session()->remove('mensagem');
 
-    return view('lanchonete.index', compact('clientes', 'lanches', 'bebidas', 'adicionais', 'mensagem'));
+    return view('lanchonete.index', compact('clientes', 'lanches', 'bebidas', 'adicionais', 'mensagem', 'pedidos'));
     }
+
+    // salva os dados no BD
+    public function storePedido(PedidoFormRequest $request)
+    {
+        $pedido = Pedido::create($request->all());
+        $request->session()
+            ->flash(
+                'mensagem',
+                "Pedido {$pedido->id} adicionado com sucesso"
+            );
+
+        return redirect()->route('index');
+    }
+
 
     
 

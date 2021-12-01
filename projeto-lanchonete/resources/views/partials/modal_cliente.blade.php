@@ -11,27 +11,28 @@
                 <form method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="" class="col-form-label">Código:</label>
-                        <input type="number" class="form-control" name="id" id="id" disabled value="">
+                        <label for="">Código</label>
+                        <input type="number" class="form-control" name="id" id="id" disabled> 
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-form-label">Nome</label>
+                        <label for="">Nome</label>
                         <input type="text" class="form-control" name="nome" id="nome">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-form-label">Endereço:</label>
+                        <label for="">Endereço</label>
                         <input type="text" class="form-control" name="endereco" id="endereco">
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-form-label">Telefone:</label>
-                        <input type="text" class="form-control" name="telefone" id="telefone">
+                        <label for="">Telefone</label>
+                        <input type="text" onkeypress="$(this).mask('(00)0.0000-0000')" class="form-control" name="telefone" id="telefone">
                     </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <button type="submit" action="{{ route('index') }}" class="btn btn-primary">Cadastrar</button>
             </div>
-            </form>
+        </form>
         </div>
     </div>
 </div>
