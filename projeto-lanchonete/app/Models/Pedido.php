@@ -11,7 +11,7 @@ class Pedido extends Model
 
     public $timestamps = false;
     
-    protected $fillable = ['idCliente', 'data', 'valorTotal', 'observacoes'];
+    protected $fillable = ['idCliente', 'data', 'observacoes'];
 
     public function cliente()
     {

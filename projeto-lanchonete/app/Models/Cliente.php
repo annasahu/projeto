@@ -10,7 +10,7 @@ class Cliente extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['id','nome','endereco','telefone'];
+    protected $fillable = ['id','nome','endereco','telefone']; 
     
     
     public function pedido()

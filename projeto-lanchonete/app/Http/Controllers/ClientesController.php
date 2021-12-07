@@ -30,14 +30,16 @@ class ClientesController extends Controller
     }
 
     // salva os dados no BD - via modal
+    // modal de produtos interferindo no modal de clientes, só salva no modal de clientes se comentar as rotas de produtos.
     public function storeClienteModal(ClienteFormRequest $request)
     {
         $cliente = Cliente::create($request->all());
         $request->session()
             ->flash(
                 'mensagem',
-                "{$cliente->id} - {$cliente->nome} - adicionado com sucesso"
+                "{$cliente->id} - {$cliente->nome} adicionado com sucesso"
             );
+
         return redirect()->route('index');
     }
 

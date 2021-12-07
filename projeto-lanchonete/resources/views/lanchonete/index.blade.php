@@ -1,4 +1,4 @@
-{{-- 
+{{--
 ##############################
 ########### Grupo: ###########
 #     Anna Sahú              #
@@ -26,6 +26,16 @@
 </div>
 @endif
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form class="form-container-fluid" method="post">
     <div class="container-fluid">
         <fieldset>
@@ -33,18 +43,17 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <img src="https://img.icons8.com/emoji/48/000000/hamburger-emoji.png" />
-
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-link" >Novo</a>
-                </li>
-
-                <li class="nav-item">
-                    <button class="btn btn-link" onclick="window.print()">Fechar Pedido</a>
+                    <button class="btn btn-link" type="reset">Novo</a>
                 </li>
 
                 <li class="nav-item">
-                    <button class="btn btn-link" type="submit">Salvar</a>
+                    <button class="btn btn-link" type="submit">Fechar Pedido</a>
+                </li>
+
+                <li class="nav-item">
+                    <button class="btn btn-link" type="submit" action="{{ route('index') }}">Salvar</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
@@ -76,16 +85,15 @@
                         <form class=" ">
                             <div>
                                 <label for="formGroupExampleInput">Código do Pedido</label>
-                                <input type="text" class="form-control" id="idPedido" disabled>
-                                {{-- <label>{{$pedidos->idPedido}}</label>> --}}
+                                <input type="number" class="form-control" id="id" name="id" disabled>
                             </div>
                             <div class="row">
                                 <label class="col-11" for="exampleFormControlSelect1">Nome do Cliente</label>
                                 <div class="col-11">
-                                    <select class="form-control" id="cliente">
+                                    <select class="form-control" id="idCliente" name="idCliente">
                                         <option selected></option>
                                         @foreach ($clientes as $cliente)
-                                        <option>{{ $cliente->nome }}</option>
+                                        <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -102,10 +110,10 @@
                                 <legend>Tipos de Lanche</legend>
                                 <div class="row">
                                     <div class="col-11">
-                                        <select class="form-control" id="lanche">
+                                        <select class="form-control" id="idProduto" name="idProduto">
                                             <option selected></option>
                                             @foreach ($lanches as $lanche)
-                                            <option>{{ $lanche->descricao }}</option>
+                                            <option value="{{ $lanche->id }}">{{ $lanche->descricao }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -119,12 +127,10 @@
                                     <fieldset>
                                         <legend>Bebidas</legend>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="opcaobebida" id="bebidasim" value="sim">
-                                            <label class="form-check-label" for="bebidasim">Sim</label>
+                                            <input class="form-check-input" type="radio" name="opcaobebida" id="opcaobebida" value="sim">Sim
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="opcaobebida" id="bebidanao" value="nao">
-                                            <label class="form-check-label" for="bebidanao">Não</label>
+                                            <input class="form-check-input" type="radio" name="opcaobebida" id="opcaobebida" value="nao">Não
                                         </div>
                                     </fieldset>
                                 </div>
@@ -132,12 +138,10 @@
                                     <fieldset>
                                         <legend>Bebida Gelada?</legend>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="sim">
-                                            <label class="form-check-label" for="inlineRadio3">Sim</label>
+                                            <input class="form-check-input" type="radio" name="bebidagelada" id="bebidagelada" value="sim">Sim
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio4" value="nao">
-                                            <label class="form-check-label" for="inlineRadio4">Não</label>
+                                            <input class="form-check-input" type="radio" name="bebidagelada" id="bebidagelada" value="nao">Não
                                         </div>
                                     </fieldset>
                                 </div>
@@ -147,10 +151,10 @@
                                 <legend>Tipos de Bebida</legend>
                                 <div class="row">
                                     <div class="col-11">
-                                        <select class="form-control" id="bebida" name="bebida">
+                                        <select class="form-control" id="idProduto" name="idProduto">
                                             <option selected></option>
                                             @foreach ($bebidas as $bebida)
-                                            <option>{{ $bebida->descricao }}</option>
+                                            <option value="{{ $bebida->id }}">{{ $bebida->descricao }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -169,12 +173,10 @@
                                 <legend>Adicionais</legend>
                                 <div class="form-check form-check-inline">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio5" value="sim">
-                                        <label class="form-check-label" for="inlineRadio5">Sim</label>
+                                        <input class="form-check-input" type="radio" name="opcaoadicional" id="opcaoadicional" value="sim">Sim
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio6" value="nao">
-                                        <label class="form-check-label" for="inlineRadio6">Não</label>
+                                        <input class="form-check-input" type="radio" name="opcaoadicional" id="opcaoadicional" value="nao">Não
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#adicionaisModal">
@@ -188,7 +190,7 @@
                                 <legend>Adicionais</legend>
                                 @foreach ($adicionais as $adicional)
                                 <label class="form-check" for="defaultCheck1">
-                                    <input class="form-check-input" type="checkbox" id="adicional" name="adicional" value="{{ $adicional->descricao }}" id="defaultCheck">{{ $adicional->descricao }}
+                                    <input class="form-check-input" type="checkbox" id="idProduto" name="idProduto" value="{{ $adicional->id }}">{{ $adicional->descricao }}
                                 </label>
                                 @endforeach
                             </fieldset>
@@ -205,12 +207,33 @@
                 <fieldset>
                     <legend>Pedido:</legend>
                     <div>
-                        <textarea class="form-control" id="resumoPedido" rows="20" disabled></textarea>
+                        <textarea class="form-control" id="relatorioAtual" rows="20" disabled>
+                        {{-- @php
+                        echo '$data'
+                        <b>Data:</b> $data<br>
+                        <b>Pedido:</b> $idPedido<br>
+                        <b>Cliente:</b> $cliente<br>
+                        <b>Lanche:</b> $lanche<br>
+                        <b>Bebida?</b> $opcaobebida<br>
+                        @if($opcaobebida = 'sim')
+                        <b>Bebida Gelada?</b> $bebidagelada<br>
+                        <b>Bebida:</b> $bebida<br>
+                        @endif
+                        <b>Adicional?</b> $opcaoadicional<br>
+                        @if($opcaoadicional = 'sim')
+                        <b>$adicional</b>
+                        @endif
+                        <b>Obsercações:</b> $observacao<br>
+                        <b>Valor Total:</b>R$  <br>
+                        "
+                        @endphp --}}
+                        </textarea>
                     </div>
                 </fieldset>
             </div>
         </div>
     </div>
 </form>
+
 
 @endsection

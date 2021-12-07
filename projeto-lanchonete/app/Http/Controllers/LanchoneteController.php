@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Cliente;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Pedido;
 use App\Http\Requests\PedidoFormRequest;
+use App\Models\Item;
+
 
 class LanchoneteController extends Controller
 {
@@ -50,17 +53,52 @@ class LanchoneteController extends Controller
     }
 
     // salva os dados no BD
-    public function storePedido(PedidoFormRequest $request)
-    {
-        $pedido = Pedido::create($request->all());
-        $request->session()
-            ->flash(
-                'mensagem',
-                "Pedido {$pedido->id} adicionado com sucesso"
-            );
 
-        return redirect()->route('index');
-    }
+    // public function storePedido(PedidoFormRequest $request)
+    // {
+        
+    //     $pedido = Pedido::create(
+    //         $request->idCliente,
+    //         $request->data,
+    //         $request->observacoes
+    //     )->save();
+
+    //     $items = Item::create(
+    //         $request->idPedido->$pedido->id,
+    //         $request->idProduto
+    //     )->save();
+
+    //     // $precoTotal = Item::where(function($query) {
+    //     //     $query->sum('valor')
+    //     //             ->from('produtos')
+    //     //             ->whereColumn('produtos.id','itens.idProduto')
+    //     // } )->get();
+
+    //     $request->session()
+    //         ->flash(
+    //             'mensagem',
+    //             "Pedido {$pedido->id} adicionado com sucesso"
+    //         );
+
+    //     return redirect()->route('index');
+    // }
+
+    // public function relatorioPedidoAtual(PedidoFormRequest $request)
+    // {
+
+    //     $precoTotal = Item::where(function($query) {
+    //         $query->sum('valor')
+    //               ->from('produtos')
+    //               ->whereColumn('produtos.id','itens.idProduto')
+    //     } )->get();
+
+    //     $itensPedido = Item::addSelect(['idItem' => Pedido::select('id')
+    //                 ->whereColumn('idPedido','id')
+    //                 ->orderByAsc('idItem')
+    //             ])->get();
+
+    //     return redirect()->route('relatorio_atual');
+    // }
 
 
     

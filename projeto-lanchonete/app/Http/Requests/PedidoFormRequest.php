@@ -25,10 +25,7 @@ class PedidoFormRequest extends FormRequest
     {
         return [
             'idCliente' => 'required',
-            'data' => 'required',
-            'lanche' => 'required',
-            'bebida' => 'required',
-            'adicional' => 'required',
+            'data' => 'required'
         ];
     }
 

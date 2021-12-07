@@ -11,7 +11,7 @@ class Item extends Model
 
     public $timestamps = false;
     
-    protected $fillable = ['idPedido', 'idProduto', 'quantidade'];
+    protected $fillable = ['idPedido', 'idProduto'];
 
     public function produto()
     {
