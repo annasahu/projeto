@@ -52,7 +52,7 @@ CREATE TABLE `clientes` (
   `endereco` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +61,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (1,'Maria Rita','Rua Valfenda, 52','(19)9.8562-1851');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,32 +95,31 @@ LOCK TABLES `failed_jobs` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `itens`
+-- Table structure for table `items`
 --
 
-DROP TABLE IF EXISTS `itens`;
+DROP TABLE IF EXISTS `items`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `itens` (
+CREATE TABLE `items` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idPedido` int(10) unsigned NOT NULL,
   `idProduto` int(10) unsigned NOT NULL,
-  `quantidade` double NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `itens_idpedido_foreign` (`idPedido`),
-  KEY `itens_idproduto_foreign` (`idProduto`),
-  CONSTRAINT `itens_idpedido_foreign` FOREIGN KEY (`idPedido`) REFERENCES `pedidos` (`id`),
-  CONSTRAINT `itens_idproduto_foreign` FOREIGN KEY (`idProduto`) REFERENCES `produtos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `items_idpedido_foreign` (`idPedido`),
+  KEY `items_idproduto_foreign` (`idProduto`),
+  CONSTRAINT `items_idpedido_foreign` FOREIGN KEY (`idPedido`) REFERENCES `pedidos` (`id`),
+  CONSTRAINT `items_idproduto_foreign` FOREIGN KEY (`idProduto`) REFERENCES `produtos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `itens`
+-- Dumping data for table `items`
 --
 
-LOCK TABLES `itens` WRITE;
-/*!40000 ALTER TABLE `itens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `itens` ENABLE KEYS */;
+LOCK TABLES `items` WRITE;
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (32,'2014_10_12_000000_create_users_table',1),(33,'2014_10_12_100000_create_password_resets_table',1),(34,'2019_08_19_000000_create_failed_jobs_table',1),(35,'2019_12_14_000001_create_personal_access_tokens_table',1),(36,'2021_10_28_015857_criar_tabela_clientes',1),(37,'2021_10_28_130024_criar_tabela_categoria',1),(38,'2021_10_28_130201_criar_tabela_produto',1),(39,'2021_11_30_212058_criar_tabela_pedido',1),(40,'2021_11_30_212943_criar_tabela_item',1);
+INSERT INTO `migrations` VALUES (49,'2021_11_30_212943_criar_tabela_item',1),(52,'2014_10_12_000000_create_users_table',2),(53,'2014_10_12_100000_create_password_resets_table',2),(54,'2019_08_19_000000_create_failed_jobs_table',2),(55,'2019_12_14_000001_create_personal_access_tokens_table',2),(56,'2021_10_28_015857_criar_tabela_clientes',2),(57,'2021_10_28_130024_criar_tabela_categoria',2),(58,'2021_10_28_130201_criar_tabela_produto',2),(59,'2021_11_30_212058_criar_tabela_pedido',2),(60,'2021_12_07_013702_criar_tabela_item',2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +246,7 @@ CREATE TABLE `produtos` (
   PRIMARY KEY (`id`),
   KEY `produtos_idcat_foreign` (`idCat`),
   CONSTRAINT `produtos_idcat_foreign` FOREIGN KEY (`idCat`) REFERENCES `categorias` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,6 +255,7 @@ CREATE TABLE `produtos` (
 
 LOCK TABLES `produtos` WRITE;
 /*!40000 ALTER TABLE `produtos` DISABLE KEYS */;
+INSERT INTO `produtos` VALUES (1,2,'Coca-cola',5),(2,3,'Cachorro-quente',19),(3,1,'Mostarda',0.1);
 /*!40000 ALTER TABLE `produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30 19:26:16
+-- Dump completed on 2021-12-06 23:45:50

@@ -1,12 +1,12 @@
 {{--
 ##############################
-########### Grupo: ###########
-#     Anna Sahú              #
-#     Alex Silva             #
-#     Julia Silva            #
-#     Filipi Aniceto         #
-#     Raphael Santos         #
-############################## 
+########### Grupo 4 ###########
+#      Anna Sahú              #
+#      Alex Silva             #
+#      Julia Silva            #
+#      Filipi Aniceto         #
+#      Raphael Santos         #
+###############################
 --}}
 
 @include('partials.modal_cliente')
